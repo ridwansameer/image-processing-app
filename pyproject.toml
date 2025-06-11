@@ -1,0 +1,9 @@
+[project]
+name = "data-processing-sample"
+version = "0.1.0"
+description = "Processes data"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow>=11.2.1",
+]
