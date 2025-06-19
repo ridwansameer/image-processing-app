@@ -1,0 +1,383 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+/* App.css */
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+h1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+h2 {
+  color: #333;
+  margin: 0 0 20px 0;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+h3 {
+  color: #555;
+  margin: 0 0 15px 0;
+  font-size: 1.2em;
+}
+
+/* Sections */
+.upload-section,
+.options-section,
+.process-section,
+.status-section,
+.error-section,
+.result-section {
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.result-section {
+  border-bottom: none;
+}
+
+/* File Input */
+.file-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.file-input:hover {
+  border-color: #667eea;
+}
+
+/* Preview */
+.preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
+}
+
+.file-info {
+  color: #666;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+/* Checkboxes */
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.checkbox-label:hover {
+  border-color: #667eea;
+  background-color: #f8f9ff;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"]:checked + span,
+.checkbox-label:has(input[type="checkbox"]:checked) {
+  color: #667eea;
+  font-weight: 500;
+}
+
+/* Radio Buttons */
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.radio-label:hover {
+  border-color: #667eea;
+  background-color: #f8f9ff;
+}
+
+.radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"]:checked + .radio-text,
+.radio-label:has(input[type="radio"]:checked) {
+  color: #667eea;
+  font-weight: 500;
+}
+
+.radio-text {
+  flex: 1;
+}
+
+/* Estimate */
+.estimate {
+  padding: 15px;
+  background: #f8f9ff;
+  border-radius: 8px;
+  color: #555;
+  font-size: 16px;
+}
+
+/* Buttons */
+.process-button,
+.download-button,
+.reset-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.process-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 100%;
+}
+
+.process-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.process-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.process-button.processing {
+  background: #95a5ff;
+  animation: pulse 2s infinite;
+}
+
+.download-button {
+  background: #28a745;
+  color: white;
+  margin-right: 15px;
+}
+
+.download-button:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  background: #6c757d;
+  color: white;
+}
+
+.reset-button:hover {
+  background: #545b62;
+  transform: translateY(-2px);
+}
+
+/* Status Section */
+.status-section {
+  text-align: center;
+  background: #f8f9ff;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+.status-details {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.progress-note {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  color: #856404;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Error Section */
+.error-section {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.error-message {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid #dc3545;
+}
+
+/* Result Section */
+.result-container {
+  text-align: center;
+}
+
+.image-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.image-side {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.result-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result-actions {
+  margin-top: 30px;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+  
+  .container {
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 2em;
+    padding: 20px;
+  }
+  
+  .upload-section,
+  .options-section,
+  .process-section,
+  .status-section,
+  .error-section,
+  .result-section {
+    padding: 20px;
+  }
+  
+  .image-comparison {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .download-button {
+    margin-right: 0;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+  }
+  
+  .reset-button {
+    width: 100%;
+  }
+}
