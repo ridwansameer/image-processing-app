@@ -25,10 +25,22 @@ const upload = multer({
 app.use(express.json());
 app.use(express.static("public"));
 
-// Cors
-app.use(cors());
+// Cors - allow all origins in production for now
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' ? true : '*',
+  credentials: true
+}));
 // Store for tracking jobs
 const jobs = new Map();
+
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "Image Processing API" });
+});
+
+app.get("/api", (req, res) => {
+  res.json({ status: "ok", endpoints: ["/api/upload", "/api/process", "/api/status/:jobId", "/api/jobs", "/api/download/:filename"] });
+});
 
 // Upload endpoint
 app.post("/api/upload", upload.single("image"), (req, res) => {
@@ -158,6 +170,6 @@ app.get("/api/jobs", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
