@@ -41,25 +41,21 @@ export default function Home() {
   // Upload image
   const uploadImage = async () => {
     if (!selectedFile) return null;
-    console.log("selectedFile", selectedFile);
 
     const formData = new FormData();
     formData.append("image", selectedFile);
-    console.log("formData", formData);
 
     try {
       const response = await fetch(`${API_BASE}/upload`, {
         method: "POST",
         body: formData,
       });
-      console.log("response", response);
 
       if (!response.ok) {
         throw new Error("Upload failed");
       }
 
       const result = await response.json();
-      console.log("result", result);
       setUploadedImage(result);
       return result;
     } catch (err) {
@@ -165,8 +161,12 @@ export default function Home() {
         <nav className="nav-header">
           <h1>Image Processor</h1>
           <div className="nav-links">
-            <a href="/" className="nav-link active">Process Image</a>
-            <a href="/jobs" className="nav-link">View Processed Images</a>
+            <a href="/" className="nav-link active">
+              Process Image
+            </a>
+            <a href="/jobs" className="nav-link">
+              View Processed Images
+            </a>
           </div>
         </nav>
 
