@@ -162,7 +162,13 @@ export default function Home() {
   return (
     <div className="app">
       <div className="container">
-        <h1>Image Processor</h1>
+        <nav className="nav-header">
+          <h1>Image Processor</h1>
+          <div className="nav-links">
+            <a href="/" className="nav-link active">Process Image</a>
+            <a href="/jobs" className="nav-link">View Processed Images</a>
+          </div>
+        </nav>
 
         {/* File Upload Section */}
         <div className="upload-section">

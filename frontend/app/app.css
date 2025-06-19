@@ -33,13 +33,52 @@ body {
 }
 
 h1 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: #333;
   margin: 0;
-  padding: 30px;
-  text-align: center;
   font-size: 2.5em;
   font-weight: 300;
+}
+
+/* Navigation */
+.nav-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-header h1 {
+  color: white;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -61,12 +100,14 @@ h3 {
 .process-section,
 .status-section,
 .error-section,
-.result-section {
+.result-section,
+.jobs-section {
   padding: 30px;
   border-bottom: 1px solid #eee;
 }
 
-.result-section {
+.result-section,
+.jobs-section {
   border-bottom: none;
 }
 
@@ -351,9 +392,24 @@ h3 {
     margin: 0;
   }
   
-  h1 {
-    font-size: 2em;
+  .nav-header {
+    flex-direction: column;
+    gap: 15px;
     padding: 20px;
+  }
+  
+  .nav-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 16px;
   }
   
   .upload-section,
@@ -361,7 +417,8 @@ h3 {
   .process-section,
   .status-section,
   .error-section,
-  .result-section {
+  .result-section,
+  .jobs-section {
     padding: 20px;
   }
   

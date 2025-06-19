@@ -65,11 +65,18 @@ export default function JobsRoute() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-5">
-        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
-            <p className="ml-4 text-gray-600">Loading jobs...</p>
+      <div className="app">
+        <div className="container">
+          <nav className="nav-header">
+            <h1>Image Processor</h1>
+            <div className="nav-links">
+              <a href="/" className="nav-link">Process Image</a>
+              <a href="/jobs" className="nav-link active">View Processed Images</a>
+            </div>
+          </nav>
+          <div className="status-section">
+            <div className="loading-spinner"></div>
+            <p>Loading jobs...</p>
           </div>
         </div>
       </div>
@@ -78,20 +85,18 @@ export default function JobsRoute() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-5">
-        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-          <div className="p-8 text-center">
-            <div className="text-red-500 text-6xl mb-4">⚠️</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Error Loading Jobs
-            </h2>
-            <p className="text-gray-600 mb-6">{error}</p>
-            <Link
-              to="/"
-              className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
-              Back to Home
-            </Link>
+      <div className="app">
+        <div className="container">
+          <nav className="nav-header">
+            <h1>Image Processor</h1>
+            <div className="nav-links">
+              <a href="/" className="nav-link">Process Image</a>
+              <a href="/jobs" className="nav-link active">View Processed Images</a>
+            </div>
+          </nav>
+          <div className="error-section">
+            <h2>Error Loading Jobs</h2>
+            <p className="error-message">{error}</p>
           </div>
         </div>
       </div>
@@ -99,28 +104,18 @@ export default function JobsRoute() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-5">
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-4xl font-light mb-2">Processing Jobs</h1>
-              <p className="text-indigo-100">
-                Track your image processing tasks
-              </p>
-            </div>
-            <Link
-              to="/"
-              className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-medium transition-colors border border-white/30"
-            >
-              New Job
-            </Link>
+    <div className="app">
+      <div className="container">
+        <nav className="nav-header">
+          <h1>Image Processor</h1>
+          <div className="nav-links">
+            <a href="/" className="nav-link">Process Image</a>
+            <a href="/jobs" className="nav-link active">View Processed Images</a>
           </div>
-        </div>
+        </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="jobs-section">
           {jobs.length === 0 ? (
             <div className="text-center py-16">
               <div className="text-gray-400 text-8xl mb-6">📸</div>
